@@ -74,7 +74,7 @@ pub trait HttpClient {
 #[async_trait]
 pub trait XrpcClient: HttpClient {
     fn host(&self) -> &str;
-    fn auth(&self, is_refresh: bool) -> Option<&str>;
+    fn auth(&self, is_refresh: bool) -> Option<String>;
     async fn send<E>(
         &self,
         method: Method,
@@ -177,7 +177,7 @@ mod tests {
         fn host(&self) -> &str {
             "https://example.com"
         }
-        fn auth(&self, _: bool) -> Option<&str> {
+        fn auth(&self, _: bool) -> Option<String> {
             None
         }
     }
